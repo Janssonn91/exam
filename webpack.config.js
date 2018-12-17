@@ -1,3 +1,5 @@
+const webpack = require('webpack');
+
 module.exports = {
   entry: './src/index.js',
   output: {
@@ -5,18 +7,27 @@ module.exports = {
     publicPath: '/',
     filename: 'bundle.js'
   },
-  devServer: {
-    contentBase: './public'
+  resolve: {
+    extensions: ['*', '.js', '.jsx']
   },
+  devServer: {
+    contentBase: './public',
+    hot: true
+  },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin()
+  ],
   module: {
     rules: [
+      // {
+      //   test: /\.json$/,
+      //   exclude: /node_modules/,
+      //   loader: 'json-loader'
+      // },
       {
-        test: /\.json$/,
-        loader: 'json-loader'
-      },
-      {
-        test: /\.js$/,
-        loader: 'babel-loader'
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: ['babel-loader']
       }
     ]
   }
