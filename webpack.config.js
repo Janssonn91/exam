@@ -2,10 +2,18 @@ module.exports = {
   entry: './src/index.js',
   output: {
     path: __dirname + '/public',
-    filname: 'bundle.js'
+    publicPath: '/',
+    filename: 'bundle.js'
+  },
+  devServer: {
+    contentBase: './public'
   },
   module: {
-    loaders: [
+    rules: [
+      {
+        test: /\.json$/,
+        loader: 'json-loader'
+      },
       {
         test: /\.js$/,
         loader: 'babel-loader'
