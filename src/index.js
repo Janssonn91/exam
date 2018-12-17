@@ -1,9 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import './index.css';
+
 const App = () => {
   return (
-    <h2>hej...</h2>
+    <div>
+      <h2>hej...</h2>
+      <p className="test">Test av css</p>
+    </div>
   );
 };
 
