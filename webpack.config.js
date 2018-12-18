@@ -14,9 +14,6 @@ module.exports = {
     contentBase: './public',
     hot: true
   },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin()
-  ],
   module: {
     rules: [
       // {
@@ -30,10 +27,11 @@ module.exports = {
         use: ['babel-loader']
       },
       {
-        test: /\.css$/,
+        test: /\.s?css$/,
         use: [
           'style-loader',
-          'css-loader'
+          'css-loader',
+          'sass-loader'
         ]
       }
     ]
